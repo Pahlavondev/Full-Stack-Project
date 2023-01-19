@@ -8,8 +8,8 @@ const Input = ({ label, state, setState, type = "text" }) => {
         className="form-control"
         value={state}
         onChange={(e) => setState(e.target.value)}
-        id="floatingInput"
         placeholder={label}
+        autoComplete="off"
       />
       <label htmlFor="floatingInput">{label}</label>
     </div>

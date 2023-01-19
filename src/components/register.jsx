@@ -17,7 +17,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.auth);
 
-  const loginHandler = async (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     dispatch(registerUserStart());
 
@@ -29,13 +29,10 @@ const Register = () => {
 
     try {
       const response = await AuthService.userRegister(user);
-
-      console.log(response);
-      console.log(user);
-
-      dispatch(registerUserSuccess());
+      dispatch(registerUserSuccess(response.user));
     } catch (error) {
-      dispatch(registerUserFailure());
+      console.log(error.response.data);
+      dispatch(registerUserFailure(error.response.data.errors));
     }
   };
 
@@ -64,7 +61,7 @@ const Register = () => {
 
           <button
             className="w-100 btn btn-lg btn-primary"
-            onClick={loginHandler}
+            onClick={registerHandler}
             disabled={isLoading}
             type="submit"
           >
