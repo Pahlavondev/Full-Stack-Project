@@ -29,6 +29,11 @@ export const authSlice = createSlice({
       state.error = action.payload;
     },
 
+    logoutUser: (state) => {
+      state.user = null;
+      state.loggedIn = false;
+    },
+
     // REGISTER
     registerUserStart: (state) => {
       state.isLoading = true;
@@ -55,6 +60,7 @@ export const {
   registerUserFailure,
   loginUserSuccess,
   loginUserFailure,
+  logoutUser,
 } = authSlice.actions;
 
 export default authSlice.reducer;
