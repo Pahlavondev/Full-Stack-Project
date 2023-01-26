@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Main, Login, Register, Navbar } from "./components";
+import { Main, Login, Register, Navbar, ArticleDetail } from "./components";
 import AuthService from "./service/auth";
 import { useDispatch } from "react-redux";
 import signUserSuccess from "./slice/auth";
@@ -41,11 +41,14 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/article/:slug" element={<ArticleDetail />} />
+        </Routes>
+      </div>
     </div>
   );
 };
